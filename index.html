@@ -24,11 +24,46 @@ main{max-width:1560px;padding:clamp(14px,2.5vw,34px)}
 button:focus-visible,select:focus-visible,a:focus-visible{outline:2px solid #8fc9fa;outline-offset:3px}
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{transition:none!important;animation:none!important}}
 @media(max-width:500px){.brand{font-size:23px}.cards{gap:9px}.card{border-radius:13px}.controls select{width:100%;flex:auto}}
+
+.tse-module{margin:16px 0 22px;border:1px solid #3b5770;background:linear-gradient(125deg,#14253a,#101d30 72%);border-radius:17px;padding:20px;box-shadow:0 12px 36px #0002}
+.tse-head{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;align-items:center}.tse-label{font-size:11px;color:#9ecbff;letter-spacing:.13em;font-weight:800}.tse-head h2{font-size:22px;margin:5px 0}.tse-status{border-radius:99px;background:#27384b;border:1px solid #567087;padding:6px 12px;font-size:12px}
+.tse-stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:17px 0}.tse-stat{background:#0c1828;border:1px solid #2b3f56;border-radius:12px;padding:13px}.tse-stat strong{font-size:24px;display:block;font-variant-numeric:tabular-nums}.tse-stat small{color:#afc1d3}
+.tse-candidate{margin:12px 0}.tse-candidate .row strong{font-size:18px}.tse-track{height:13px;background:#34485c;border-radius:8px;overflow:hidden;margin-top:7px}.tse-fill{height:100%;width:0%;transition:width .5s}.tse-footer{display:flex;gap:15px;justify-content:space-between;flex-wrap:wrap;font-size:12px;color:#adc0d3;border-top:1px solid #31445a;padding-top:12px;margin-top:14px}
+@media(max-width:650px){.tse-stats{grid-template-columns:1fr}.tse-module{padding:14px}}
+
+.tse-tabs{display:flex;gap:9px;flex-wrap:wrap;margin:14px 0 4px}
+.tse-tab{background:#14263b;border:1px solid #3b536b;border-radius:10px;padding:10px 17px;color:#d8e7f6;cursor:pointer;font-weight:700}
+.tse-tab[aria-selected="true"]{background:#294461;border-color:#83bce8;color:#fff;box-shadow:inset 0 -2px 0 #8bc5f3}
+.tse-tab:focus-visible{outline:2px solid #8bc5f3;outline-offset:3px}
+.tse-vote-panel{background:#0d1b2c;border:1px solid #30465c;border-radius:12px;padding:18px;margin:14px 0}
+.tse-vote-panel[hidden]{display:none}
+.tse-vote-number{font-size:clamp(27px,4vw,43px);font-weight:850;font-variant-numeric:tabular-nums;margin:6px 0}
+.tse-vote-help{font-size:13px;color:#aabed1}
 </style></head><body><main>
 <header class="top"><div><div class="eyebrow">INTELIGÊNCIA DE DADOS • BRASIL 2026</div><div class="brand">◈ CYBERTRON ELEITORAL</div><div class="sub">Segundo turno presidencial · acompanhamento de levantamentos nacionais</div></div><div class="row"><span class="chip" id="status">Carregando dados</span><button id="refresh">↻ Atualizar</button></div></header>
 <div class="row" style="margin-top:16px"><div class="legend"><span><i class="dot" style="background:var(--red)"></i>Lula (PT)</span><span><i class="dot" style="background:var(--gold)"></i>Flávio Bolsonaro (PL)</span></div><span class="tiny" id="freshness">Aguardando atualização da base…</span></div>
 <section class="cards"><div class="card"><div class="tiny">PESQUISAS NA BASE</div><div class="kpi" id="count">—</div><div class="tiny">Levantamentos cadastrados</div></div><div class="card"><div class="tiny">INSTITUTOS</div><div class="kpi" id="institutes">—</div><div class="tiny">Fontes de levantamentos</div></div><div class="card"><div class="tiny">DOCUMENTAÇÃO</div><div class="kpi" id="documented">—</div><div class="tiny">Com evidências editoriais anexadas</div></div><div class="card"><div class="tiny">ÚLTIMA DIVULGAÇÃO</div><div class="kpi" style="font-size:22px" id="last">—</div><div class="tiny">Data registrada na base</div></div></section>
 <div class="notice" id="alert">Pesquisas não são resultados oficiais. O campo de aprovação antigo não comprova a autenticidade das fontes.</div>
+<section class="tse-module" aria-labelledby="tse-title"><div class="tse-head"><div><div class="tse-label">RESULTADOS OFICIAIS · TSE · 25/10/2026</div><h2 id="tse-title">Apuração presidencial — 2º turno</h2><div class="tiny">Dados da totalização nacional do Tribunal Superior Eleitoral, independentes das pesquisas.</div></div><span class="tse-status" id="tse-status" role="status">Consultando base oficial…</span></div>
+<div class="tse-stats"><div class="tse-stat"><small>Seções totalizadas</small><strong id="tse-progress">—</strong><small id="tse-sections">Aguardando divulgação</small></div><div class="tse-stat"><small>Votos válidos totalizados</small><strong id="tse-valid">—</strong><small>Contagem oficial, não estimativa</small></div><div class="tse-stat"><small>Última atualização do TSE</small><strong id="tse-time" style="font-size:17px">—</strong><small id="tse-fetch">Coleta ainda não disponível</small></div></div>
+<div class="tse-tabs" role="tablist" aria-label="Categorias de votos oficiais">
+<button class="tse-tab" type="button" role="tab" id="tab-candidatos" aria-controls="panel-candidatos" aria-selected="true" data-tse-tab="candidatos">Candidatos</button>
+<button class="tse-tab" type="button" role="tab" id="tab-brancos" aria-controls="panel-brancos" aria-selected="false" data-tse-tab="brancos">Votos brancos</button>
+<button class="tse-tab" type="button" role="tab" id="tab-nulos" aria-controls="panel-nulos" aria-selected="false" data-tse-tab="nulos">Votos nulos</button>
+</div><div id="panel-candidatos" role="tabpanel" aria-labelledby="tab-candidatos"><div id="tse-results" hidden><div class="tse-candidate"><div class="row"><span>Lula (PT)</span><strong id="tse-lula">—</strong></div><div class="tse-track"><div class="tse-fill" id="tse-lula-bar" style="background:#ef6b72"></div></div><small id="tse-lula-votes" class="tiny">—</small></div><div class="tse-candidate"><div class="row"><span>Flávio Bolsonaro (PL)</span><strong id="tse-flavio">—</strong></div><div class="tse-track"><div class="tse-fill" id="tse-flavio-bar" style="background:#f0c16b"></div></div><small id="tse-flavio-votes" class="tiny">—</small></div></div>
+<p id="tse-empty" class="sub">Aguardando início da divulgação dos votos pelo TSE. Nenhum resultado simulado será exibido.</p>
+</div>
+<div id="panel-brancos" class="tse-vote-panel" role="tabpanel" aria-labelledby="tab-brancos" hidden>
+<div class="tse-label">TOTALIZAÇÃO OFICIAL · VOTOS EM BRANCO</div>
+<div class="tse-vote-number" id="tse-blank">—</div>
+<div class="tse-vote-help" id="tse-blank-info">Aguardando a disponibilização deste dado pelo TSE.</div>
+</div>
+<div id="panel-nulos" class="tse-vote-panel" role="tabpanel" aria-labelledby="tab-nulos" hidden>
+<div class="tse-label">TOTALIZAÇÃO OFICIAL · VOTOS NULOS</div>
+<div class="tse-vote-number" id="tse-null">—</div>
+<div class="tse-vote-help" id="tse-null-info">Aguardando a disponibilização deste dado pelo TSE.</div>
+</div>
+<div class="tse-footer"><span>Atualização automática da página a cada 60 segundos; coleta programada no GitHub a cada 5 minutos, sujeita a atrasos.</span><a href="https://resultados.tse.jus.br/" target="_blank" rel="noopener noreferrer">Conferir no TSE ↗</a></div></section>
 <div class="grid"><div class="stack"><section class="card"><div class="row"><h2>Comparação por instituto</h2><div class="legend"><span><i class="dot" style="background:var(--red)"></i>Lula</span><span><i class="dot" style="background:var(--gold)"></i>Flávio Bolsonaro</span></div></div><div id="chart" role="img" aria-label="Evolução dos percentuais publicados"></div><div class="tiny">Cada ponto é uma pesquisa distinta, ordenada pela divulgação. Cada linha horizontal representa um levantamento independente. Não há interpolação, média ou projeção.</div></section><section class="card"><div class="row"><h2>Levantamentos publicados</h2><span class="tiny" id="shown"></span></div><div class="controls"><select id="filter"><option value="">Todos os institutos</option></select><select id="mode"><option value="valid">Votos válidos</option><option value="total">Votos totais</option></select><select id="order"><option value="recent">Mais recentes</option><option value="old">Mais antigos</option></select></div><div id="polls"></div></section></div>
 <aside class="stack"><section class="card"><h2>Transparência editorial</h2><div id="editorial"></div><p class="tiny">Uma pesquisa só recebe o selo de documentação completa quando há URL do relatório original, referência do registro eleitoral, revisor, data e checklist de conferência. O selo indica presença de documentação declarada; não equivale a certificação pelo TSE.</p></section><section class="card"><h2>Entenda os números</h2><p class="tiny"><strong>Votos válidos:</strong> excluem brancos, nulos e indecisos conforme metodologia divulgada.</p><p class="tiny"><strong>Votos totais:</strong> podem incluir outras respostas, portanto os dois candidatos podem somar menos de 100%.</p><p class="tiny"><strong>Margem de erro:</strong> pertence a cada levantamento; diferenças pequenas não estabelecem vantagem estatística por si só.</p></section><section class="card"><h2>Fontes e revisão</h2><div class="links"><a href="https://pesqele-divulgacao.tse.jus.br/app/pesquisa/listar.xhtml" target="_blank" rel="noopener">PesqEle / TSE ↗</a><a href="https://resultados.tse.jus.br/" target="_blank" rel="noopener">Resultados oficiais ↗</a><a href="./revisao.html">Central Editorial ↗</a></div><p class="tiny" id="updated"></p></section></aside></div><div class="foot">CYBERTRON ELEITORAL • Painel informativo e apartidário. Não realiza projeção de vencedor, apuração oficial ou agregação estatística de pesquisas.</div>
 </main><script>
@@ -68,4 +103,50 @@ const n=all.filter(documented).length;$('editorial').innerHTML='<div class="kpi"
 }
 async function load(){try{$('status').textContent='Atualizando…';const r=await fetch('./pesquisas.json?cache='+Date.now(),{cache:'no-store'});if(!r.ok)throw Error('HTTP '+r.status);const d=await r.json();if(!Array.isArray(d.polls))throw Error('Base inválida');db=d;render();$('status').textContent='● Base carregada'}catch(e){$('status').textContent='Falha ao carregar';$('polls').textContent='Erro ao ler pesquisas.json: '+e.message}}
 $('refresh').onclick=load;['filter','mode','order'].forEach(id=>$(id).addEventListener('change',render));load();setInterval(load,3600000);
+
+const fmtInt=n=>Number(n).toLocaleString('pt-BR');
+async function loadTse(){
+ try{
+ const response=await fetch('./apuracao_tse.json?cache='+Date.now(),{cache:'no-store'});
+ if(!response.ok)throw new Error('arquivo ainda não publicado');
+ const d=await response.json();
+ if(d.source!=='TSE' || d.election!==6258 || d.office!=='presidente' || d.round!==2)throw new Error('origem ou eleição não reconhecida');
+ const status=$('tse-status');
+ const voteAvailable=d.status==='apurando'||d.status==='concluido';
+ for(const [field,id] of [['blank_votes','blank'],['null_votes','null']]){
+   const v=d[field];const available=voteAvailable&&Number.isSafeInteger(v)&&v>=0;
+   $('tse-'+id).textContent=available?fmtInt(v):'—';
+   $('tse-'+id+'-info').textContent=available?'Votos registrados na totalização nacional do TSE. Não entram na contagem de votos válidos.':'Aguardando dado oficial específico para esta categoria; ausência de dado não significa zero.';
+ }
+
+ const age=d.fetched_at?Date.now()-Date.parse(d.fetched_at):Infinity;
+ const stale=!Number.isFinite(age)||age>20*60*1000;
+ $('tse-time').textContent=d.tse_updated_at||'—';
+ $('tse-fetch').textContent=d.fetched_at?'Coletado: '+new Date(d.fetched_at).toLocaleString('pt-BR',{timeZone:'America/Sao_Paulo'}):'Sem horário de coleta';
+ if(d.status!=='apurando'&&d.status!=='concluido'){
+  status.textContent=stale?'Dados aguardando atualização':'Aguardando apuração';
+  $('tse-empty').hidden=false;$('tse-results').hidden=true;
+  $('tse-empty').textContent='O TSE ainda não divulgou votos do segundo turno nesta fonte. Nenhum resultado simulado será exibido.';
+  $('tse-progress').textContent='0%';$('tse-sections').textContent='Nenhuma seção totalizada';$('tse-valid').textContent='0';return;
+ }
+ if(!Array.isArray(d.candidates)||d.candidates.length!==2||!Number.isFinite(d.valid_votes)||d.valid_votes<=0)throw new Error('estrutura de resultados inválida');
+ const byNumber=Object.fromEntries(d.candidates.map(c=>[String(c.number),c]));const lula=byNumber['13'],flavio=byNumber['22'];if(!lula||!flavio)throw new Error('candidatos não identificados');
+ status.textContent=stale?'Última apuração disponível (desatualizada)':d.status==='concluido'?'Totalização concluída':'Apuração em andamento';
+ $('tse-progress').textContent=Number(d.sections_percent).toLocaleString('pt-BR',{maximumFractionDigits:2})+'%';
+ $('tse-sections').textContent=fmtInt(d.sections_count)+' de '+fmtInt(d.sections_total)+' seções';
+ $('tse-valid').textContent=fmtInt(d.valid_votes);
+ for(const [name,c] of [['lula',lula],['flavio',flavio]]){
+  $('tse-'+name).textContent=Number(c.percent).toLocaleString('pt-BR',{minimumFractionDigits:2,maximumFractionDigits:2})+'%';
+  $('tse-'+name+'-votes').textContent=fmtInt(c.votes)+' votos';
+  $('tse-'+name+'-bar').style.width=Math.min(100,Math.max(0,Number(c.percent)))+'%';
+ }
+ $('tse-results').hidden=false;$('tse-empty').hidden=true;
+ }catch(e){$('tse-status').textContent='Fonte indisponível';$('tse-empty').hidden=false;$('tse-results').hidden=true;$('tse-empty').textContent='Não foi possível obter a apuração oficial. Consulte o site do TSE. Detalhe: '+e.message;}
+}
+document.querySelectorAll('[data-tse-tab]').forEach(button=>button.addEventListener('click',()=>{
+ const selected=button.dataset.tseTab;
+ document.querySelectorAll('[data-tse-tab]').forEach(tab=>tab.setAttribute('aria-selected',String(tab.dataset.tseTab===selected)));
+ for(const key of ['candidatos','brancos','nulos'])$('panel-'+key).hidden=key!==selected;
+}));
+loadTse();setInterval(loadTse,60000);
 </script></body></html>
