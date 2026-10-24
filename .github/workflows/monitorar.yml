@@ -1,4 +1,4 @@
-
+name: Monitorar pesquisas pre-eleitorais
 on:
   schedule:
     - cron: '17 * * * *'
@@ -19,17 +19,16 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Descobrir matérias (sem publicar resultados automaticamente)
+      - name: Descobrir noticias candidatas
         run: python scripts/discover.py
       - name: Validar base aprovada
         run: python scripts/validate.py
-      - name: Registrar novos candidatos a conferência
+      - name: Registrar fontes pendentes
         run: |
           if ! git diff --quiet -- pendentes.json; then
             git config user.name 'github-actions[bot]'
             git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
             git add pendentes.json
-            git commit -m 'Atualizar fila de fontes para conferência'
+            git commit -m 'Atualizar fontes pendentes de conferencia'
             git push
           fi
-
