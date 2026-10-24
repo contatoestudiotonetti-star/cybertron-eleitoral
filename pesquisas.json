@@ -1,38 +1,4 @@
 {
   "updated": "2026-10-23",
-  "polls": [
-    {
-      "institute": "Datafolha",
-      "date": "2026-10-22",
-      "l": 50,
-      "f": 50,
-      "lt": 46,
-      "ft": 47,
-      "margin": 2,
-      "source": "https://datafolha.folha.uol.com.br/eleicoes/2026/10/flavio-bolsonaro-pl-tem-47-e-tem-empate-tecnico-com-lula-pt-que-aparece-com-46.shtml",
-      "registration": "BR-09709/2026"
-    },
-    {
-      "institute": "Ipespe/Abrapel",
-      "date": "2026-10-23",
-      "l": 49.5,
-      "f": 50.5,
-      "lt": 47,
-      "ft": 48,
-      "margin": 2.6,
-      "source": "https://resultadoeleitoral.com/pesquisas",
-      "registration": "BR-04350/2026"
-    },
-    {
-      "institute": "Real Time Big Data",
-      "date": "2026-10-23",
-      "l": 48,
-      "f": 52,
-      "lt": 45,
-      "ft": 49,
-      "margin": 2,
-      "source": "https://noticias.uol.com.br/eleicoes/2026/10/23/pesquisa-presidente-2026-segundo-turno-veja-numeros-do-realtime-big-data.ghtm",
-      "registration": "BR-09670/2026"
-    }
-  ]
+  "polls": []
 }
