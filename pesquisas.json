@@ -1,4 +1,53 @@
 {
   "updated": "2026-10-23",
-  "polls": []
+  "polls": [
+    {
+      "institute": "Vox Brasil",
+      "registration": "BR-03259/2026",
+      "source": "https://exame.com/brasil/pesquisa-vox-brasil-lula-tem-506-e-flavio-494-dos-votos-validos-no-2o-turno/",
+      "collected_from": "2026-10-20",
+      "collected_to": "2026-10-22",
+      "published_at": "2026-10-23",
+      "sample": 2100,
+      "margin": 2.15,
+      "scope": "nacional",
+      "l": 50.6,
+      "f": 49.4,
+      "lt": null,
+      "ft": null,
+      "verified": true
+    },
+    {
+      "institute": "Ipespe/Abrapel",
+      "registration": "BR-04350/2026",
+      "source": "https://www.poder360.com.br/poder-eleicoes-2026/flavio-tem-505-contra-495-de-lula-diz-ipespe-abrapel/",
+      "collected_from": "2026-10-20",
+      "collected_to": "2026-10-22",
+      "published_at": "2026-10-23",
+      "sample": 1500,
+      "margin": 2.6,
+      "scope": "nacional",
+      "l": 49.5,
+      "f": 50.5,
+      "lt": 47,
+      "ft": 48,
+      "verified": true
+    },
+    {
+      "institute": "Datafolha",
+      "registration": "BR-09709/2026",
+      "source": "https://www.cnnbrasil.com.br/eleicoes/datafolha-flavio-e-lula-empatam-em-50-de-votos-validos-no-2o-turno/",
+      "collected_from": "2026-10-20",
+      "collected_to": "2026-10-22",
+      "published_at": "2026-10-22",
+      "sample": 2520,
+      "margin": 2.0,
+      "scope": "nacional",
+      "l": 50,
+      "f": 50,
+      "lt": 46,
+      "ft": 47,
+      "verified": true
+    }
+  ]
 }
