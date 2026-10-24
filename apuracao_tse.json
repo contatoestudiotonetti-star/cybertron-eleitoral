@@ -1,1 +1,18 @@
+{
+  "source": "TSE",
+  "source_url": "https://resultados.tse.jus.br/oficial/ele2026/6258/dados/br/br-c0001-e006258-u.json",
+  "election": 6258,
+  "round": 2,
+  "office": "presidente",
+  "status": "aguardando",
+  "fetched_at": null,
+  "tse_updated_at": null,
+  "sections_count": 0,
+  "sections_total": 0,
+  "sections_percent": 0,
+  "valid_votes": 0,
+  "candidates": [],
+  "blank_votes": null,
+  "null_votes": null
+}
 
