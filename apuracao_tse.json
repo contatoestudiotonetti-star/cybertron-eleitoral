@@ -5,14 +5,13 @@
   "round": 2,
   "office": "presidente",
   "status": "aguardando",
-  "fetched_at": null,
-  "tse_updated_at": null,
+  "fetched_at": "2026-10-24T02:11:48.857539Z",
+  "tse_updated_at": "15/10/2026 09:38:12",
   "sections_count": 0,
-  "sections_total": 0,
+  "sections_total": 499248,
   "sections_percent": 0,
   "valid_votes": 0,
-  "candidates": [],
   "blank_votes": null,
-  "null_votes": null
+  "null_votes": null,
+  "candidates": []
 }
-
