@@ -1,1 +1,35 @@
 
+on:
+  schedule:
+    - cron: '17 * * * *'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: cybertron-monitor
+  cancel-in-progress: false
+jobs:
+  monitorar:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Descobrir matérias (sem publicar resultados automaticamente)
+        run: python scripts/discover.py
+      - name: Validar base aprovada
+        run: python scripts/validate.py
+      - name: Registrar novos candidatos a conferência
+        run: |
+          if ! git diff --quiet -- pendentes.json; then
+            git config user.name 'github-actions[bot]'
+            git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+            git add pendentes.json
+            git commit -m 'Atualizar fila de fontes para conferência'
+            git push
+          fi
+
