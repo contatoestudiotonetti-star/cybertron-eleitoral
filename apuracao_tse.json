@@ -5,25 +5,25 @@
   "round": 2,
   "office": "presidente",
   "status": "apurando",
-  "fetched_at": "2026-10-26T00:55:57.353762Z",
-  "tse_updated_at": "25/10/2026 21:54:36",
-  "sections_count": 499059,
+  "fetched_at": "2026-10-26T01:37:47.307507Z",
+  "tse_updated_at": "25/10/2026 22:36:57",
+  "sections_count": 499236,
   "sections_total": 499248,
-  "sections_percent": 99.96,
-  "valid_votes": 124042555,
-  "blank_votes": 1430090,
-  "null_votes": 2722466,
+  "sections_percent": 99.99,
+  "valid_votes": 124079569,
+  "blank_votes": 1430469,
+  "null_votes": 2723255,
   "candidates": [
     {
       "number": "22",
       "name": "FLAVIO BOLSONARO",
-      "votes": 59812670,
+      "votes": 59825216,
       "percent": 48.22
     },
     {
       "number": "13",
       "name": "LULA",
-      "votes": 64229885,
+      "votes": 64254353,
       "percent": 51.78
     }
   ]
